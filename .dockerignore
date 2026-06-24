@@ -1,0 +1,26 @@
+# The build only needs pyproject.toml, README.md, src/, and release/crontab.
+# Everything else just bloats the build context sent to the daemon.
+.git
+.gitignore
+.github
+.venv
+env
+venv
+__pycache__
+*.pyc
+*.pyo
+.pytest_cache
+.ruff_cache
+.mypy_cache
+tests
+docs
+tasks
+archive
+*.md
+!README.md
+.env
+*.env
+release/.env
+.vscode
+.idea
+.DS_Store

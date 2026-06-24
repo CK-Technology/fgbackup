@@ -5,6 +5,15 @@ __pycache__/
 .venv/
 env/
 venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Secrets / runtime env (never commit)
+.env
+*.env
+!*.env.example
+release/.env
 
 # Local workflow / scratch (not committed)
 tasks/

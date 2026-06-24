@@ -1,0 +1,11 @@
+# supercronic schedule (container TZ via env). Fields: m h dom mon dow  command
+#
+# Hourly: pull every FortiGate config and snapshot to Wasabi via restic.
+0 * * * *     fgbackup run
+#
+# Daily 02:30: apply retention (cheap; only drops snapshot references).
+30 2 * * *    fgbackup forget
+#
+# Quarterly (1st of Jan/Apr/Jul/Oct, 03:00): actually delete/repack + verify.
+# Spaced so pruned pack files have aged past Wasabi's 90-day minimum storage.
+0 3 1 */3 *   fgbackup prune && fgbackup check

@@ -1,0 +1,19 @@
+services:
+  fgbackup:
+    build:
+      context: ..
+      dockerfile: release/Dockerfile
+    image: ghcr.io/ck-technology/fgbackup:latest
+    container_name: fgbackup
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      TZ: ${TZ:-UTC}
+    volumes:
+      - staging:/staging
+      - restic-cache:/root/.cache/restic
+
+volumes:
+  staging:
+  restic-cache:
